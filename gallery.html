@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery, Maps & Tables - Lab 2</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        figure { display: inline-block; margin: 10px; text-align: center; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h1>Gallery, Maps & Tables</h1>
+    <p><a href="index.html">← Back to Home Page</a></p>
+
+    <!-- Subpage Links -->
+    <section>
+        <h2>Internal Pages</h2>
+        <ul>
+            <li><a href="pages/library.html">Library Page</a></li>
+            <li><a href="pages/lab.html">Lab Page</a></li>
+            <li><a href="pages/admin.html">Admin Page</a></li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <!-- Image Gallery -->
+    <section>
+        <h2>Image Gallery</h2>
+        <figure>
+            <img src="images/ima3.jpg" alt="Photo 1" width="200">
+            <figcaption>Figure 1: Photo One</figcaption>
+        </figure>
+        <figure>
+            <img src="images/ima1.jpg" alt="Photo 2" width="200">
+            <figcaption>Figure 2: Photo Two</figcaption>
+        </figure>
+        <figure>
+            <img src="images/ima2.jpg" alt="Photo 3" width="200">
+            <figcaption>Figure 3: Photo Three</figcaption>
+        </figure>
+    </section>
+
+    <hr>
+
+    <!-- Interactive Image Map -->
+    <section>
+        <h2>Interactive Map</h2>
+        <img src="images/map.png" alt="Map" usemap="#workmap" width="400">
+        <map name="workmap">
+            <area shape="rect" coords="34,44,270,350" href="pages/library.html" alt="Library">
+        </map>
+    </section>
+
+    <hr>
+
+    <!-- Tables -->
+    <section>
+        <h2>Data Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>library.html</td>
+                    <td>Library internal page</td>
+                </tr>
+                <tr>
+                    <td>lab.html</td>
+                    <td>Lab internal page</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+</html>

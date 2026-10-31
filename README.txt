@@ -1,0 +1,1 @@
+This Lab2 folder contains the home page, gallery, tables, PDF files, and images. All relative paths are implemented correctly. No unresolved issues encountered.

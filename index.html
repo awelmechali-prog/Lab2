@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Lab 2</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #f9f9f9; }
+        header { background: #007bff; color: white; padding: 15px; border-radius: 5px; }
+        nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        .card { background: white; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input[type="text"] { padding: 8px; width: 250px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 8px 15px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #218838; }
+        .pdf-link { display: inline-block; padding: 8px 12px; background: #dc3545; color: white; text-decoration: none; border-radius: 4px; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>እንኳን ወደ Home Page በደህና መጡ</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery, Maps & Tables</a>
+        </nav>
+    </header>
+
+    <!-- ሀ) የፍለጋ ሳጥኑ (Search Input Box) -->
+    <div class="card">
+        <h3>በገጹ ላይ ይፈልጉ (Search)</h3>
+        <input type="text" id="searchInput" onkeyup="searchPage()" placeholder="የሚፈልጉትን ቃል ይጻፉ...">
+    </div>
+
+    <!-- ለ) PDF ፋይል ማውጫ እና ማያ ክፍል -->
+    <div class="card searchable">
+        <h3>📄 የላብራቶሪ PDF ሰነድ</h3>
+        <p>የማስታወሻ ጽሁፉን ለማየት ወይም ለማውረድ ይጫኑ፦</p>
+        <a href="files/notes.pdf" class="pdf-link" target="_blank">PDF እይ (View)</a>
+        <a href="files/notes.pdf" class="pdf-link" style="background:#17a2b8;" download>PDF አውርድ (Download)</a>
+    </div>
+
+    <!-- ሐ) ስም አስገብቶ ፋይል ማውረጃ -->
+    <div class="card searchable">
+        <h3>ስምዎን አስገብተው ሰነድ ያውርዱ</h3>
+        <input type="text" id="userName" placeholder="ሙሉ ስምዎን ያስገቡ..." required>
+        <button onclick="downloadUserFile()">ፋይሉን አውርድ (Download)</button>
+    </div>
+
+    <!-- መ) ሊፈለጉ የሚችሉ ዋና ዋና ይዘቶች (Searchable Items) -->
+    <main>
+        <div class="card searchable">
+            <h2>ስለ ላብራቶሪ 2</h2>
+            <p>ይህ የ Web Programming Lab 2 ፕሮጀክት ሲሆን የቤት ገጽ፣ ጋለሪ፣ ካርታዎች፣ ሠንጠረዦች እና ንዑስ ገጾችን ይዟል[cite: 1]。</p>
+        </div>
+    </main>
+
+    <!-- ሠ) የ JavaScript ፍለጋ እና ማውረጃ ኮድ (Script) -->
+    <script>
+    function searchPage() {
+        // 1. ተጠቃሚው የጻፈውን ቃል ወደ ትንሽ ፊደል (Lowercase) ቀይሮ ይይዛል
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        
+        // 2. 'searchable' ክልል የተሰጣቸውን የገጹ ክፍሎች ይመርጣል
+        let items = document.querySelectorAll('.searchable');
+        
+        // 3. እያንዳንዱን ክፍል በመፈተሽ ቃሉ ካለ ያሳያል፣ ከሌለ ይደብቃል (Hide)
+        items.forEach(item => {
+            let text = item.textContent.toLowerCase();
+            if (text.includes(input)) {
+                item.style.display = ""; // ይታይ
+            } else {
+                item.style.display = "none"; // ይጠፋ
+            }
+        });
+    }
+
+    function downloadUserFile() {
+        let name = document.getElementById("userName").value.trim();
+        if (name === "") {
+            alert("እባክዎን ስምዎን ያስገቡ!");
+            return;
+        }
+        let content = "Lab 2 Document\nPrepared for: " + name + "\nDate: " + new Date().toLocaleDateString();
+        let blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+        let link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = name.replace(/\s+/g, '_') + "_Lab2.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+    </script>
+
+</body>
+</html>
